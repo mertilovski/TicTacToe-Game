@@ -69,9 +69,18 @@ public class Game{
 
 			if(XorO[i] == XorO[i+1])
 				if(XorO[i+1] == XorO[i+2])
-					return true;		
+					return true;								
 		}
 
+		for(int i = 0 ; i < 3 ; i++){ //vertical check
+
+			if(XorO[i] == XorO[i+3])
+				if(XorO[i+3] == XorO[i+6])
+					return true;								
+		}
+
+
+		
 	}
 
 	public static void main(String[] args) {
