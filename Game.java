@@ -1,3 +1,4 @@
+package com.mert.games;
 import java.awt.Button;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -6,6 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
+
 
 public class Game{
 	
@@ -25,7 +27,7 @@ public class Game{
 		map.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		map.setLocationRelativeTo(null);
-		
+
 		map.setSize(width,height);
 		map.setResizable(false);
 
