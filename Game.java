@@ -13,6 +13,7 @@ public class Game{
 	public JButton[] buttons = new JButton[9];
 	public boolean[] XorO = new boolean[9];
 	public int counter = 0;
+	public boolean[] dirty = new boolean[9];
 	
 	Game() {
 		
@@ -33,11 +34,17 @@ public class Game{
 					if(counter % 2 == 0){
 						thisbutton.setText("X");
 						checkGame(i,true);
+						
 					}else{
 						thisbutton.setText("O");
 						checkGame(i,false);
 					}
 					counter++;
+					int winner = endGame();
+
+					if(winner != -1){} //there is a winner or its a tie
+					
+					
 				}
 			});
 		}
@@ -47,7 +54,7 @@ public class Game{
 		for(int i = 0 ; i < 9 ; i++){
 
 			map.add(buttons[i]);
-			XorO[i] = null; //full check for array
+			dirty[i] = false; //full check for array
 		}
 		
 
@@ -59,40 +66,49 @@ public class Game{
 	public void checkGame(int num , boolean val){
 
 		XorO[num] = val;
-		endGame();
+		dirty[num] = true;
+		
 
 
 	}	
 
-	public boolean endGame(){
+	public int endGame(){ // which way did they win
 
 		for(int i = 0 ; i < 9 ; i+=3){ //horizontal check
 
 			if(XorO[i] == XorO[i+1])
 				if(XorO[i+1] == XorO[i+2])
-					return true;								
+					return 0;								
 		}
 
 		for(int i = 0 ; i < 3 ; i++){ //vertical check
 
 			if(XorO[i] == XorO[i+3])
 				if(XorO[i+3] == XorO[i+6])
-					return true;								
+					return 1;								
 		}
 
 			if(XorO[0] == XorO[4])
 				if(XorO[4] == XorO[8]) //CrossCheckLeftToRight
-					return true;	
+					return 2;	
 
 		
 			if(XorO[2] == XorO[4])
 				if(XorO[4] == XorO[6]) //CrossCheckRightToLeft
-					return true;	
-				
-			//isFull();
+					return 3;	
+
+			if(isFull())
+				return 4;
+			return -1; //no winner yet
 	}
 
+	boolean isFull(){
 
+		for(int i = 0 ; i < 9 ; i++)
+			if(dirty[i] == false)
+				return false;
+		return true;
+	}
 
 	public static void main(String[] args) {
 		
