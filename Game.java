@@ -9,7 +9,7 @@ import javax.swing.JOptionPane;
 
 public class Game{
 	
-	
+	static Game newGame = null;
 	public JFrame map = null;
 	public JButton[] buttons = new JButton[9];
 	public int[] XorO = new int[9];
@@ -184,11 +184,21 @@ public class Game{
 	}
 
 	void optionPopUp(String title){
-		option.showConfirmDialog(null,"Do you want to play again?",title, JOptionPane.DEFAULT_OPTION);
+		int res = option.showConfirmDialog(null,"Do you want to play again?",title, JOptionPane.YES_NO_OPTION);
+		if(res == JOptionPane.YES_OPTION){
+			map.dispose();
+			newGame = new Game();
+		}else{
+
+			map.dispose();
+			System.exit(0);
+
+		}
+
 	}
 	public static void main(String[] args) {
 		
-		Game newGame = new Game();
+		newGame = new Game();
 		
 		
 	}
