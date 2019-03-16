@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 
 public class Game{
 	
@@ -14,6 +15,7 @@ public class Game{
 	public int[] XorO = new int[9];
 	public int counter = 0;
 	public boolean[] dirty = new boolean[9];
+	JOptionPane option = null;
 	
 	Game() {
 		
@@ -22,6 +24,12 @@ public class Game{
 		map = new JFrame("TicTacToe Game");
 		map.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		map.setSize(width,height);
+
+		JFrame endFrame = new JFrame(); //Frame that will show if game ends
+		endFrame.setSize(width-50,height-50);
+		option = new JOptionPane();
+		endFrame.add(option);
+
 		for(int i = 0 ; i < 9 ; i++){
 			buttons[i] = new JButton();
 			JButton thisbutton = buttons[i];
@@ -50,9 +58,14 @@ public class Game{
 
 							if(XorO[number] == 1){
 								map.setTitle("X is the Winner! ");
+								endFrame.setTitle("X is the Winner! ");
+								endFrame.setVisible(true);
+								
 							}else{
 								map.setTitle("O is the Winner!");
-
+								endFrame.setTitle("O is the Winner! ");
+								endFrame.setVisible(true);
+								
 
 							}
 						
@@ -61,8 +74,14 @@ public class Game{
 
 							if(XorO[number] == 1){
 								map.setTitle("X is the Winner! ");
+								endFrame.setTitle("X is the Winner! ");
+								endFrame.setVisible(true);
+								
 							}else{
 								map.setTitle("O is the Winner!");
+								endFrame.setTitle("O is the Winner! ");
+								endFrame.setVisible(true);
+								
 
 							}
 
@@ -72,9 +91,13 @@ public class Game{
 
 							if(XorO[number] == 1){
 								map.setTitle("X is the Winner!");
+								endFrame.setTitle("X is the Winner! ");
+								endFrame.setVisible(true);
 
 							}else{
 								map.setTitle("O is the Winner!");
+								endFrame.setTitle("O is the Winner! ");
+								endFrame.setVisible(true);
 
 
 							}
@@ -84,8 +107,13 @@ public class Game{
 
 							if(XorO[number] == 1){
 								map.setTitle("X is the Winner! ");
+								endFrame.setTitle("X is the Winner! ");
+								endFrame.setTitle("O is the Winner! ");
+								endFrame.setVisible(true);
 							}else{
 								map.setTitle("O is the Winner!");
+								endFrame.setTitle("O is the Winner! ");
+								endFrame.setVisible(true);
 
 							}
 
@@ -94,8 +122,10 @@ public class Game{
 
 							if(XorO[number] == 1){
 								map.setTitle("Its a TIE");
+								endFrame.setVisible(true);
 							}else{
 								map.setTitle("Its a TIE");
+								endFrame.setVisible(true);
 
 							}
 
@@ -173,6 +203,7 @@ public class Game{
 		return true;
 	}
 
+	void optionPopUp(){}
 	public static void main(String[] args) {
 		
 		Game newGame = new Game();
