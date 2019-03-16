@@ -48,7 +48,7 @@ public class Game{
 					
 						if(winner == 0){
 
-							if(current == 1){
+							if(XorO[number] == 1){
 								map.setTitle("X is the Winner! ");
 							}else{
 								map.setTitle("O is the Winner!");
@@ -59,7 +59,7 @@ public class Game{
 					}else if(winner == 1){
 
 
-							if(current == 1){
+							if(XorO[number] == 1){
 								map.setTitle("X is the Winner! ");
 							}else{
 								map.setTitle("O is the Winner!");
@@ -70,7 +70,7 @@ public class Game{
 
 
 
-							if(current == 1){
+							if(XorO[number] == 1){
 								map.setTitle("X is the Winner!");
 
 							}else{
@@ -82,7 +82,7 @@ public class Game{
 						}else if(winner == 3){
 
 
-							if(current == 1){
+							if(XorO[number] == 1){
 								map.setTitle("X is the Winner! ");
 							}else{
 								map.setTitle("O is the Winner!");
@@ -92,7 +92,7 @@ public class Game{
 						}else if(winner == 4){
 
 
-							if(current == 1){
+							if(XorO[number] == 1){
 								map.setTitle("Its a TIE");
 							}else{
 								map.setTitle("Its a TIE");
