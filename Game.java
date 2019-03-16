@@ -16,14 +16,18 @@ public class Game{
 	public int counter = 0;
 	public boolean[] dirty = new boolean[9];
 	JOptionPane option = null;
-	
+	JOptionPane howTo = null;
 	Game() {
 		
 		int width = 300;
 		int height = 300;
 		map = new JFrame("TicTacToe Game");
 		map.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		
+		map.setLocationRelativeTo(null);
+		
 		map.setSize(width,height);
+		map.setResizable(false);
 
 		option = new JOptionPane();
 
@@ -128,6 +132,7 @@ public class Game{
 		
 
 		map.setVisible(true);
+		howToPlayPopUp(); // Message box that tells about game
 		
 		
 	}
@@ -194,6 +199,13 @@ public class Game{
 			System.exit(0);
 
 		}
+
+	}
+
+	void howToPlayPopUp(){
+
+		howTo = new JOptionPane();
+		howTo.showMessageDialog(null,"This is a classical tictactoe game.\nWhere the XXX or OOO wins.\nMade by Mert Kaya - 2019", "How To Play", JOptionPane.DEFAULT_OPTION);
 
 	}
 	public static void main(String[] args) {
