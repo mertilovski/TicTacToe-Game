@@ -42,11 +42,12 @@ public class Game{
 			});
 		}
 
+
 		map.setLayout(new GridLayout(3,3));
 		for(int i = 0 ; i < 9 ; i++){
 
 			map.add(buttons[i]);
-
+			XorO[i] = null; //full check for array
 		}
 		
 
@@ -79,9 +80,19 @@ public class Game{
 					return true;								
 		}
 
+			if(XorO[0] == XorO[4])
+				if(XorO[4] == XorO[8]) //CrossCheckLeftToRight
+					return true;	
 
 		
+			if(XorO[2] == XorO[4])
+				if(XorO[4] == XorO[6]) //CrossCheckRightToLeft
+					return true;	
+				
+			//isFull();
 	}
+
+
 
 	public static void main(String[] args) {
 		
