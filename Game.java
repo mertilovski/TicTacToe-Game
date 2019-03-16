@@ -11,7 +11,7 @@ public class Game{
 	
 	public JFrame map = null;
 	public JButton[] buttons = new JButton[9];
-	public boolean[] XorO = new boolean[9];
+	public int[] XorO = new int[9];
 	public int counter = 0;
 	public boolean[] dirty = new boolean[9];
 	
@@ -26,19 +26,20 @@ public class Game{
 			buttons[i] = new JButton();
 			JButton thisbutton = buttons[i];
 			buttons[i].setSize(10,10);
-			boolean current = XorO[i];
+			int current = XorO[i];
+			int number = i;
 			buttons[i].addActionListener(new ActionListener(){
 				@Override
-				public void actionPerformed(ActionEvent e) {
+				public void actionPerformed(ActionEvent e){
 					
 					
 					if(counter % 2 == 0){
 						thisbutton.setText("X");
-						checkGame(i,true);
+						checkGame(number,1);
 						
 					}else{
 						thisbutton.setText("O");
-						checkGame(i,false);
+						checkGame(number,2);
 					}
 					counter++;
 					int winner = endGame();
@@ -47,21 +48,56 @@ public class Game{
 					
 						if(winner == 0){
 
-							if(current == true){}
-								map.setTitle("X is the Winner! Closing in 5");
-								Thread.sleep(5000);
+							if(current == 1){
+								map.setTitle("X is the Winner! ");
 							}else{
-								map.setTitle("O is the Winner! Closing in 5");
-								Thread.sleep(5000);
+								map.setTitle("O is the Winner!");
+
 
 							}
-						}else if(winner == 1){
+						
+					}else if(winner == 1){
+
+
+							if(current == 1){
+								map.setTitle("X is the Winner! ");
+							}else{
+								map.setTitle("O is the Winner!");
+
+							}
 
 						}else if(winner == 2){
 
+
+
+							if(current == 1){
+								map.setTitle("X is the Winner!");
+
+							}else{
+								map.setTitle("O is the Winner!");
+
+
+							}
+
 						}else if(winner == 3){
 
+
+							if(current == 1){
+								map.setTitle("X is the Winner! ");
+							}else{
+								map.setTitle("O is the Winner!");
+
+							}
+
 						}else if(winner == 4){
+
+
+							if(current == 1){
+								map.setTitle("Its a TIE");
+							}else{
+								map.setTitle("Its a TIE");
+
+							}
 
 						}
 							
@@ -86,7 +122,7 @@ public class Game{
 		
 	}
 	
-	public void checkGame(int num , boolean val){
+	public void checkGame(int num , int val){
 
 		XorO[num] = val;
 		dirty[num] = true;
@@ -95,32 +131,36 @@ public class Game{
 
 	}	
 
+	boolean isDirty(int i){
+		return dirty[i];
+	}
+
 	public int endGame(){ // which way did they win
 
 		for(int i = 0 ; i < 9 ; i+=3){ //horizontal check
 
-			if(XorO[i] == XorO[i+1])
-				if(XorO[i+1] == XorO[i+2])
+			if((XorO[i] == XorO[i+1]) && isDirty(i) && isDirty(i+1))
+				if(XorO[i+1] == XorO[i+2] && isDirty(i+1) && isDirty(i+2))
 					return 0;								
 		}
 
 		for(int i = 0 ; i < 3 ; i++){ //vertical check
 
-			if(XorO[i] == XorO[i+3])
-				if(XorO[i+3] == XorO[i+6])
+			if(XorO[i] == XorO[i+3]&& isDirty(i) && isDirty(i+3))
+				if(XorO[i+3] == XorO[i+6] && isDirty(i+3) && isDirty(i+6))
 					return 1;								
 		}
 
-			if(XorO[0] == XorO[4])
-				if(XorO[4] == XorO[8]) //CrossCheckLeftToRight
+			if(XorO[0] == XorO[4]&& isDirty(0) && isDirty(4))
+				if(XorO[4] == XorO[8] && isDirty(4) && isDirty(8)) //CrossCheckLeftToRight
 					return 2;	
 
 		
-			if(XorO[2] == XorO[4])
-				if(XorO[4] == XorO[6]) //CrossCheckRightToLeft
+			if(XorO[2] == XorO[4] && isDirty(2) && isDirty(4))
+				if(XorO[4] == XorO[6] && isDirty(4) && isDirty(6)) //CrossCheckRightToLeft
 					return 3;	
 
-			if(isFull())
+			if(isFull()) //Its a tie
 				return 4;
 			return -1; //no winner yet
 	}
