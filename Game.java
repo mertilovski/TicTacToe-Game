@@ -55,13 +55,25 @@ public class Game{
 		
 	}
 	
-	public void CheckGame(int num , boolean val){
+	public void checkGame(int num , boolean val){
 
 		XorO[num] = val;
-		if(XorO[num] == XorO[num+1])
-			if(XorO[num+1] == XorO[num+2])					
+		endGame();
+
 
 	}	
+
+	public boolean endGame(){
+
+		for(int i = 0 ; i < 9 ; i+=3){ //horizontal check
+
+			if(XorO[i] == XorO[i+1])
+				if(XorO[i+1] == XorO[i+2])
+					return true;		
+		}
+
+	}
+
 	public static void main(String[] args) {
 		
 		Game newGame = new Game();
