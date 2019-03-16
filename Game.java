@@ -26,6 +26,7 @@ public class Game{
 			buttons[i] = new JButton();
 			JButton thisbutton = buttons[i];
 			buttons[i].setSize(10,10);
+			boolean current = XorO[i];
 			buttons[i].addActionListener(new ActionListener(){
 				@Override
 				public void actionPerformed(ActionEvent e) {
@@ -42,8 +43,30 @@ public class Game{
 					counter++;
 					int winner = endGame();
 
-					if(winner != -1){} //there is a winner or its a tie
+					if(winner != -1){ //there is a winner or its a tie
 					
+						if(winner == 0){
+
+							if(current == true){}
+								map.setTitle("X is the Winner! Closing in 5");
+								Thread.sleep(5000);
+							}else{
+								map.setTitle("O is the Winner! Closing in 5");
+								Thread.sleep(5000);
+
+							}
+						}else if(winner == 1){
+
+						}else if(winner == 2){
+
+						}else if(winner == 3){
+
+						}else if(winner == 4){
+
+						}
+							
+					
+					}
 					
 				}
 			});
