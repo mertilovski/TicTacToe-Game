@@ -18,6 +18,7 @@ public class Game{
 	public boolean[] dirty = new boolean[9];
 	JOptionPane option = null;
 	JOptionPane howTo = null;
+	static boolean isFirstTime = true; //if not first time playing don't show startup popup
 	Game() {
 		
 		int width = 300;
@@ -133,8 +134,15 @@ public class Game{
 		
 
 		map.setVisible(true);
-		howToPlayPopUp(); // Message box that tells about game
+
+		System.out.println(isFirstTime);
 		
+		if(isFirstTime){
+			isFirstTime = false;
+			howToPlayPopUp(); // Message box that tells about game
+		}
+		
+		System.out.println(isFirstTime);
 		
 	}
 	
@@ -207,7 +215,6 @@ public class Game{
 
 		howTo = new JOptionPane();
 		howTo.showMessageDialog(null,"This is a classical tictactoe game.\nWhere the XXX or OOO wins.\nMade by Mert Kaya - 2019", "How To Play", JOptionPane.DEFAULT_OPTION);
-
 	}
 	public static void main(String[] args) {
 		
@@ -215,16 +222,4 @@ public class Game{
 		
 		
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 }
