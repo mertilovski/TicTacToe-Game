@@ -135,14 +135,14 @@ public class Game{
 
 		map.setVisible(true);
 
-		System.out.println(isFirstTime);
+
 		
 		if(isFirstTime){
 			isFirstTime = false;
 			howToPlayPopUp(); // Message box that tells about game
 		}
 		
-		System.out.println(isFirstTime);
+
 		
 	}
 	
