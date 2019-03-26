@@ -20,7 +20,6 @@ File Tree :
     │   ├── main
     │   │   ├── executable
     │   │   │   ├── MANIFEST.MF
-    │   │   │   ├── TTTGame.exe
     │   │   │   └── TTTGame.jar
     │   │   └── java
     │   │       └── com
