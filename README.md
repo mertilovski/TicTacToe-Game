@@ -1,5 +1,7 @@
 # TicTacToe-Game
-
+This is a TicTacToe game project in core-java.
+Program counts for the turn so 1st click = x , second = o , third = x .
+Program asks for a replay. Else is The basics of tictactoe.
 
 File Tree : 
 ```bash
